@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'ui/main.ui',
 # licensing of 'ui/main.ui' applies.
 #
-# Created: Thu Apr 30 00:51:57 2020
+# Created: Thu Apr 30 01:05:02 2020
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -399,9 +399,9 @@ class Ui_MainWindow(object):
         self.tab_3.setObjectName("tab_3")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.tab_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(self.tab_3)
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.gridLayout_2.addWidget(self.plainTextEdit, 0, 0, 1, 1)
+        self.txtAPDULog = QtWidgets.QPlainTextEdit(self.tab_3)
+        self.txtAPDULog.setObjectName("txtAPDULog")
+        self.gridLayout_2.addWidget(self.txtAPDULog, 0, 0, 1, 1)
         self.tabMain.addTab(self.tab_3, "")
         self.verticalLayout.addWidget(self.tabMain)
         MainWindow.setCentralWidget(self.centralwidget)

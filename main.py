@@ -122,11 +122,21 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
 
     def transmit(self, cmd):
         data, sw1, sw2 = self.current_connection.transmit(toBytes(cmd))
-        # write status to statusbar
         status_code = toHexString([sw1, sw2])
+        response = toHexString(data)
+
+        # write status to apdu log
+        apdu_request  = ">> %s\n" % cmd
+        apdu_response = "<< (%s) %s\n" % (status_code, cmd)
+        self.txtAPDULog.insertPlainText(apdu_request)
+        self.txtAPDULog.insertPlainText(apdu_response)
+        self.txtAPDULog.insertPlainText("\n")
+
+        # write status to statusbar
         status_color = "green" if status_code == '90 00' else "red"
         self.write_statusbar(status_code, status_color)
-        return toHexString(data)
+
+        return response
 
     def write_statusbar(self, message, color='green'):
         self.statusbar.setStyleSheet("color: %s;" % color)
