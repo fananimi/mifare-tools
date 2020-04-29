@@ -30,16 +30,17 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             self._connect()
             return
         elif btnID == "btnAuthKeyA":
-            print("btnAuthKeyA")
             return
         elif btnID == "btnAuthKeyB":
             print("btnAuthKeyB")
             return
         elif btnID == "btnFactoryKeyA":
-            print("btnFactoryKeyA")
+            for i in range(0, 6):
+                getattr(self, 'txtKeyA%d' % i).setText("FF")
             return
         elif btnID == "btnFactoryKeyB":
-            print("btnFactoryKeyB")
+            for i in range(0, 6):
+                getattr(self, 'txtKeyB%d' % i).setText("FF")
             return
 
     def write_statusbar(self, message, color='green'):
