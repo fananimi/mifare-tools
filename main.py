@@ -1,5 +1,6 @@
 import sys
 import signal
+from smartcard.Exceptions import NoCardException
 from smartcard.System import readers
 from smartcard.util import toHexString, toBytes
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -14,6 +15,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self._register_signal()
 
         # attribute registration
+        self.current_connection = None
         self.reader_model = QtGui.QStandardItemModel()
 
         # finally we render the user interface
@@ -67,12 +69,22 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             self.reader_model.appendRow(reader_item)
 
     def _connect(self):
-        conn = readers()[0].createConnection()
-        conn.connect()
-        data, sw1, sw2 = conn.transmit(toBytes("FF CA 00 00 00"))
-        self.txtUID.setText(toHexString(data))
-        print (conn.getATR())
-        self.txtATR.setText(toHexString(conn.getATR()))
+        try:
+            self.current_connection = readers()[self.cmbReader.currentIndex()].createConnection()
+            self.current_connection.connect()
+        except IndexError:
+            self._write_statusbar("Invalid reader", "red")
+        except NoCardException as e:
+            self._write_statusbar(str(e), "red")
+        else:
+            data, sw1, sw2 = self.current_connection.transmit(toBytes("FF CA 00 00 00"))
+            self.txtUID.setText(toHexString(data))
+            self.txtATR.setText(toHexString(self.current_connection.getATR()))
+            self._write_statusbar("OK")
+
+    def _write_statusbar(self, message, color='green'):
+        self.statusbar.setStyleSheet("color: %s;" % color)
+        self.statusbar.showMessage(message)
 
 
 def main():
