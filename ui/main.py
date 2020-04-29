@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'ui/main.ui',
 # licensing of 'ui/main.ui' applies.
 #
-# Created: Thu Apr 30 01:31:14 2020
+# Created: Thu Apr 30 01:33:16 2020
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -209,17 +209,17 @@ class Ui_MainWindow(object):
         self.label_5 = QtWidgets.QLabel(self.groupBox_3)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.spinBox_2 = QtWidgets.QSpinBox(self.groupBox_3)
-        self.spinBox_2.setMaximum(3)
-        self.spinBox_2.setObjectName("spinBox_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.spinBox_2)
+        self.spnBlock = QtWidgets.QSpinBox(self.groupBox_3)
+        self.spnBlock.setMaximum(3)
+        self.spnBlock.setObjectName("spnBlock")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.spnBlock)
         self.label_4 = QtWidgets.QLabel(self.groupBox_3)
         self.label_4.setObjectName("label_4")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.spinBox = QtWidgets.QSpinBox(self.groupBox_3)
-        self.spinBox.setMaximum(15)
-        self.spinBox.setObjectName("spinBox")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.spinBox)
+        self.spnSector = QtWidgets.QSpinBox(self.groupBox_3)
+        self.spnSector.setMaximum(15)
+        self.spnSector.setObjectName("spnSector")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.spnSector)
         self.horizontalLayout_4.addWidget(self.groupBox_3)
         self.groupBox_4 = QtWidgets.QGroupBox(self.frame)
         self.groupBox_4.setObjectName("groupBox_4")
