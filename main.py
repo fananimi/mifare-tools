@@ -1,7 +1,7 @@
 import sys
 import signal
 import command
-from smartcard.Exceptions import NoCardException
+from smartcard.Exceptions import NoCardException, CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString, toBytes
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -74,23 +74,46 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             reader_item.setData(reader)
             self.reader_model.appendRow(reader_item)
 
+    def _get_active_reader(self):
+        reader_idx = self.cmbReader.currentIndex()
+        reader_obj = self.reader_model.item(reader_idx)
+        if not hasattr(reader_obj, 'data'):
+            return None
+        return reader_obj.data()
+
     def _connect(self):
         try:
-            reader_idx = self.cmbReader.currentIndex()
-            reader_obj = self.reader_model.item(reader_idx)
-            if not hasattr(reader_obj, 'data'):
-                raise IndexError()
-            self.current_connection = readers()[reader_idx].createConnection()
+            reader = self._get_active_reader()
+            if not reader:
+                self.current_connection = None
+                self.write_statusbar("No reader selected", "red")
+                return
+
+            self.current_connection = reader.createConnection()
             self.current_connection.connect()
-        except IndexError:
-            self.write_statusbar("Invalid reader", "red")
-        except NoCardException as e:
-            self.write_statusbar(str(e), "red")
-        else:
-            data, sw1, sw2 = self.current_connection.transmit(toBytes(command.UID))
-            self.txtUID.setText(toHexString(data))
+            # get UID and ATR
+            uid = self.transmit(command.UID)
+            self.txtUID.setText(toHexString(uid))
             self.txtATR.setText(toHexString(self.current_connection.getATR()))
-            self.write_statusbar("OK")
+        except (NoCardException, CardConnectionException) as e:
+            self._reload_readers()
+            self.write_statusbar(str(e), "red")
+
+    def transmit(self, cmd):
+        reader = self._get_active_reader()
+        if not reader:
+            self.current_connection = None
+            return
+        if not self.current_connection:
+            self._connect()
+
+        data, sw1, sw2 = self.current_connection.transmit(toBytes(cmd))
+        status_code = toHexString([sw1, sw2])
+
+        status_color = "green" if status_code == '90 00' else "red"
+        self.write_statusbar(status_code, status_color)
+
+        return data
 
 
 def main():

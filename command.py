@@ -1,1 +1,2 @@
 UID = "FF CA 00 00 00"
+AUTH_KEY_A = "FF 82 00 00 06"
