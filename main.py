@@ -1,5 +1,6 @@
 import sys
 import signal
+import constants
 from smartcard.Exceptions import NoCardException
 from smartcard.System import readers
 from smartcard.util import toHexString, toBytes
@@ -86,7 +87,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         except NoCardException as e:
             self.write_statusbar(str(e), "red")
         else:
-            data, sw1, sw2 = self.current_connection.transmit(toBytes("FF CA 00 00 00"))
+            data, sw1, sw2 = self.current_connection.transmit(toBytes(constants.CMD_UID))
             self.txtUID.setText(toHexString(data))
             self.txtATR.setText(toHexString(self.current_connection.getATR()))
             self.write_statusbar("OK")
