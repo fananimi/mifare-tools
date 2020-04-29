@@ -21,25 +21,6 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         # finally we render the user interface
         self._init_ui()
 
-    # --------------------------------------------------------------------------------
-    # ********************* All functions shown to user is here *********************|
-    # --------------------------------------------------------------------------------
-    def _init_ui(self):
-        # set combobox
-        self.cmbReader.setModel(self.reader_model)
-        self._reload_readers()
-
-    # --------------------------------------------------------------------------------
-    # ****************** All signals must register on this section ******************|
-    # --------------------------------------------------------------------------------
-    def _register_signal(self):
-        self.btnReloadReader.clicked.connect(self.on_click_button)
-        self.btnConnetPICC.clicked.connect(self.on_click_button)
-        self.btnAuthKeyA.clicked.connect(self.on_click_button)
-        self.btnAuthKeyB.clicked.connect(self.on_click_button)
-        self.btnFactoryKeyA.clicked.connect(self.on_click_button)
-        self.btnFactoryKeyB.clicked.connect(self.on_click_button)
-
     def on_click_button(self):
         btnID = self.sender().objectName()
         if btnID == 'btnReloadReader':
@@ -61,6 +42,29 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             print("btnFactoryKeyB")
             return
 
+    def write_statusbar(self, message, color='green'):
+        self.statusbar.setStyleSheet("color: %s;" % color)
+        self.statusbar.showMessage(message)
+
+    # --------------------------------------------------------------------------------
+    # ********************* All functions shown to user is here *********************|
+    # --------------------------------------------------------------------------------
+    def _init_ui(self):
+        # set combobox
+        self.cmbReader.setModel(self.reader_model)
+        self._reload_readers()
+
+    # --------------------------------------------------------------------------------
+    # ****************** All signals must register on this section ******************|
+    # --------------------------------------------------------------------------------
+    def _register_signal(self):
+        self.btnReloadReader.clicked.connect(self.on_click_button)
+        self.btnConnetPICC.clicked.connect(self.on_click_button)
+        self.btnAuthKeyA.clicked.connect(self.on_click_button)
+        self.btnAuthKeyB.clicked.connect(self.on_click_button)
+        self.btnFactoryKeyA.clicked.connect(self.on_click_button)
+        self.btnFactoryKeyB.clicked.connect(self.on_click_button)
+
     def _reload_readers(self):
         self.cmbReader.clear()
         for reader in readers():
@@ -73,18 +77,14 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             self.current_connection = readers()[self.cmbReader.currentIndex()].createConnection()
             self.current_connection.connect()
         except IndexError:
-            self._write_statusbar("Invalid reader", "red")
+            self.write_statusbar("Invalid reader", "red")
         except NoCardException as e:
-            self._write_statusbar(str(e), "red")
+            self.write_statusbar(str(e), "red")
         else:
             data, sw1, sw2 = self.current_connection.transmit(toBytes("FF CA 00 00 00"))
             self.txtUID.setText(toHexString(data))
             self.txtATR.setText(toHexString(self.current_connection.getATR()))
-            self._write_statusbar("OK")
-
-    def _write_statusbar(self, message, color='green'):
-        self.statusbar.setStyleSheet("color: %s;" % color)
-        self.statusbar.showMessage(message)
+            self.write_statusbar("OK")
 
 
 def main():

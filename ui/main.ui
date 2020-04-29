@@ -352,7 +352,7 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
                <item>
-                <widget class="QLineEdit" name="lineEdit">
+                <widget class="QLineEdit" name="keyA0">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -364,6 +364,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -371,7 +374,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_5">
+                <widget class="QLineEdit" name="keyA1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -383,6 +386,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -390,7 +396,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_6">
+                <widget class="QLineEdit" name="keyA2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -402,6 +408,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -409,7 +418,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_2">
+                <widget class="QLineEdit" name="keyA3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -421,6 +430,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -428,7 +440,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_3">
+                <widget class="QLineEdit" name="keyA4">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -440,6 +452,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -447,7 +462,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_4">
+                <widget class="QLineEdit" name="keyA5">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -459,6 +474,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -513,7 +531,7 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_7">
                <item>
-                <widget class="QLineEdit" name="lineEdit_7">
+                <widget class="QLineEdit" name="keyB0">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -525,6 +543,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -532,7 +553,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_8">
+                <widget class="QLineEdit" name="keyB1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -544,6 +565,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -551,7 +575,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_9">
+                <widget class="QLineEdit" name="keyB2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -563,6 +587,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -570,7 +597,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_10">
+                <widget class="QLineEdit" name="keyB3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -582,6 +609,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -589,7 +619,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_11">
+                <widget class="QLineEdit" name="keyB4">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -601,6 +631,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
@@ -608,7 +641,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="lineEdit_12">
+                <widget class="QLineEdit" name="keyB5">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -620,6 +653,9 @@
                    <width>30</width>
                    <height>30</height>
                   </size>
+                 </property>
+                 <property name="text">
+                  <string>FF</string>
                  </property>
                  <property name="maxLength">
                   <number>2</number>
