@@ -1,5 +1,7 @@
 import sys
 import signal
+from smartcard.System import readers
+from smartcard.util import toHexString, toBytes
 from PySide2 import QtCore, QtGui, QtWidgets
 from ui.main import Ui_MainWindow
 
@@ -10,6 +12,20 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         super(MifareTools, self).__init__(parent)
         self.setupUi(self)
         self._register_signal()
+
+        # attribute registration
+        self.reader_model = QtGui.QStandardItemModel()
+
+        # finally we render the user interface
+        self._init_ui()
+
+    # --------------------------------------------------------------------------------
+    # ********************* All functions shown to user is here *********************|
+    # --------------------------------------------------------------------------------
+    def _init_ui(self):
+        # set combobox
+        self.cmbReader.setModel(self.reader_model)
+        self._reload_readers()
 
     # --------------------------------------------------------------------------------
     # ****************** All signals must register on this section ******************|
@@ -25,13 +41,10 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
     def on_click_button(self):
         btnID = self.sender().objectName()
         if btnID == 'btnReloadReader':
-            print("btnReloadReader")
+            self._reload_readers()
             return
         elif btnID == "btnConnetPICC":
-            print("btnConnetPICC")
-            return
-        elif btnID == "btnReloadReader":
-            print("btnReloadReader")
+            self._connect()
             return
         elif btnID == "btnAuthKeyA":
             print("btnAuthKeyA")
@@ -45,6 +58,21 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         elif btnID == "btnFactoryKeyB":
             print("btnFactoryKeyB")
             return
+
+    def _reload_readers(self):
+        self.cmbReader.clear()
+        for reader in readers():
+            reader_item = QtGui.QStandardItem(reader.name)
+            reader_item.setData(reader)
+            self.reader_model.appendRow(reader_item)
+
+    def _connect(self):
+        conn = readers()[0].createConnection()
+        conn.connect()
+        data, sw1, sw2 = conn.transmit(toBytes("FF CA 00 00 00"))
+        self.txtUID.setText(toHexString(data))
+        print (conn.getATR())
+        self.txtATR.setText(toHexString(conn.getATR()))
 
 
 def main():
