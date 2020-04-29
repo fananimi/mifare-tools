@@ -56,10 +56,10 @@
               <number>9</number>
              </property>
              <item>
-              <widget class="QComboBox" name="comboBox"/>
+              <widget class="QComboBox" name="cmbReader"/>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="btnReloadReader">
                <property name="text">
                 <string>Reload</string>
                </property>
@@ -100,7 +100,7 @@
               <number>9</number>
              </property>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="btnConnetPICC">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -446,14 +446,14 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_6">
                <item>
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="btnAuthKeyA">
                  <property name="text">
                   <string>Authenticate</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_3">
+                <widget class="QPushButton" name="btnFactoryKeyA">
                  <property name="text">
                   <string>Factory</string>
                  </property>
@@ -466,8 +466,8 @@
               <zorder>textEdit_4</zorder>
               <zorder>textEdit_8</zorder>
               <zorder>textEdit_3</zorder>
-              <zorder>pushButton_2</zorder>
-              <zorder>pushButton_3</zorder>
+              <zorder>btnAuthKeyA</zorder>
+              <zorder>btnFactoryKeyA</zorder>
              </widget>
             </item>
            </layout>
@@ -615,14 +615,14 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_8">
                <item>
-                <widget class="QPushButton" name="pushButton_4">
+                <widget class="QPushButton" name="btnAuthKeyB">
                  <property name="text">
                   <string>Authenticate</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton_5">
+                <widget class="QPushButton" name="btnFactoryKeyB">
                  <property name="text">
                   <string>Factory</string>
                  </property>
