@@ -71,12 +71,17 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         sender = self.sender().objectName()
         if sender == self.btnReloadReader.objectName():
             self.reload_readers()
-            return
         elif sender == self.btnConnetPICC.objectName():
             if not self.is_picc_connect:
                 self.connect_picc()
             else:
                 self.disconnect_picc()
+        elif sender == self.btnFactoryKeyA.objectName():
+            for i in range(0, 6):
+                getattr(self, 'txtKeyA%d' % i).setText("FF")
+        elif sender == self.btnFactoryKeyB.objectName():
+            for i in range(0, 6):
+                getattr(self, 'txtKeyB%d' % i).setText("FF")
 
     # --------------------------------------------------------------------------------
     # *************************** Helper function is here ***************************|
