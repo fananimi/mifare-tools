@@ -75,7 +75,11 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
 
     def _connect(self):
         try:
-            self.current_connection = readers()[self.cmbReader.currentIndex()].createConnection()
+            reader_idx = self.cmbReader.currentIndex()
+            reader_obj = self.reader_model.item(reader_idx)
+            if not hasattr(reader_obj, 'data'):
+                raise IndexError()
+            self.current_connection = readers()[reader_idx].createConnection()
             self.current_connection.connect()
         except IndexError:
             self.write_statusbar("Invalid reader", "red")
