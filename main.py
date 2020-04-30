@@ -13,6 +13,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(MifareTools, self).__init__(parent)
         self.setupUi(self)
+        self.setWindowTitle("Mifare Tools")
         self.register_signal()
 
         # attribute registration
@@ -46,6 +47,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnAuthKeyB.clicked.connect(self.on_click)
         self.btnFactoryKeyA.clicked.connect(self.on_click)
         self.btnFactoryKeyB.clicked.connect(self.on_click)
+        self.btnReadBlock.clicked.connect(self.on_click)
         # comoBox changed index
         self.cmbReader.currentIndexChanged.connect(self.on_combobox_index_changed)
 
@@ -76,12 +78,24 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
                 self.connect_picc()
             else:
                 self.disconnect_picc()
+        elif sender == self.btnAuthKeyA.objectName():
+            cmd = command.LOAD_AUTH
+            for i in range(0, 6):
+                cmd += " %s" % getattr(self, 'txtKeyA%d' % i).text()
+            self.transmit(cmd)
+            cmd = command.get_block_auth_cmd(0,0,'A')
+            self.transmit(cmd)
+        elif self == self.btnFactoryKeyB.objectName():
+            pass
         elif sender == self.btnFactoryKeyA.objectName():
             for i in range(0, 6):
                 getattr(self, 'txtKeyA%d' % i).setText("FF")
         elif sender == self.btnFactoryKeyB.objectName():
             for i in range(0, 6):
                 getattr(self, 'txtKeyB%d' % i).setText("FF")
+        elif sender == self.btnReadBlock.objectName():
+            cmd = command.read_block_cmd(0,0)
+            self.transmit(cmd)
 
     # --------------------------------------------------------------------------------
     # *************************** Helper function is here ***************************|
@@ -132,7 +146,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
 
         # write status to apdu log
         apdu_request  = ">> %s\n" % cmd
-        apdu_response = "<< (%s) %s\n" % (status_code, cmd)
+        apdu_response = "<< (%s) %s\n" % (status_code, response)
         self.txtAPDULog.insertPlainText(apdu_request)
         self.txtAPDULog.insertPlainText(apdu_response)
         self.txtAPDULog.insertPlainText("\n")

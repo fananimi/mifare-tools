@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'ui/main.ui',
 # licensing of 'ui/main.ui' applies.
 #
-# Created: Thu Apr 30 01:33:16 2020
+# Created: Thu Apr 30 10:25:40 2020
 #      by: pyside2-uic  running on PySide2 5.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -403,14 +403,14 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.groupBox)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
-        self.pushButton = QtWidgets.QPushButton(self.groupBox)
+        self.btnReadBlock = QtWidgets.QPushButton(self.groupBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_9.addWidget(self.pushButton)
+        sizePolicy.setHeightForWidth(self.btnReadBlock.sizePolicy().hasHeightForWidth())
+        self.btnReadBlock.setSizePolicy(sizePolicy)
+        self.btnReadBlock.setObjectName("btnReadBlock")
+        self.horizontalLayout_9.addWidget(self.btnReadBlock)
         self.textEdit_4 = QtWidgets.QTextEdit(self.groupBox)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -621,7 +621,7 @@ class Ui_MainWindow(object):
         self.btnAuthKeyB.setText(QtWidgets.QApplication.translate("MainWindow", "Authenticate", None, -1))
         self.btnFactoryKeyB.setText(QtWidgets.QApplication.translate("MainWindow", "Factory", None, -1))
         self.groupBox.setTitle(QtWidgets.QApplication.translate("MainWindow", "Data Block", None, -1))
-        self.pushButton.setText(QtWidgets.QApplication.translate("MainWindow", "Read", None, -1))
+        self.btnReadBlock.setText(QtWidgets.QApplication.translate("MainWindow", "Read", None, -1))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "Operations", None, -1))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab_2), QtWidgets.QApplication.translate("MainWindow", "Utility", None, -1))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab_3), QtWidgets.QApplication.translate("MainWindow", "APDU Log", None, -1))
