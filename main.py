@@ -137,8 +137,10 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
                 attr = getattr(self, 'txtBlock%d' % i)
                 val = attr.text()
                 if self.cbASCII.isChecked():
+                    attr.setMaxLength(1)
                     attr.setText(self.get_ascii_value(val))
                 else:
+                    attr.setMaxLength(2)
                     attr.setText(self.get_hexa_value(val))
         elif sender == self.btnClearLog.objectName():
             self.txtAPDULog.clear()
