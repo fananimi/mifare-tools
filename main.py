@@ -108,8 +108,14 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 getattr(self, 'txtKeyB%d' % i).setText("FF")
         elif sender == self.btnReadBlock.objectName():
-            cmd = command.read_block_cmd(0, 0)
-            self.transmit(cmd)
+            sector = self.spnSector.value()
+            block = self.spnBlock.value()
+            cmd = command.read_block_cmd(sector, block)
+            data = self.transmit(cmd)
+            i = 0
+            for char in data.split():
+                getattr(self, 'txtBlock%d' % i).setText(char)
+                i += 1
         elif sender == self.btnClearLog.objectName():
             self.txtAPDULog.clear()
 
