@@ -48,6 +48,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnFactoryKeyA.clicked.connect(self.on_click)
         self.btnFactoryKeyB.clicked.connect(self.on_click)
         self.btnReadBlock.clicked.connect(self.on_click)
+        self.btnWriteBlock.clicked.connect(self.on_click)
         self.cbASCII.clicked.connect(self.on_click)
         self.btnClearLog.clicked.connect(self.on_click)
         # comoBox changed index
@@ -119,6 +120,17 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
                     val = self.get_ascii_value(val)
                 getattr(self, 'txtBlock%d' % i).setText(val)
                 i += 1
+        elif sender == self.btnWriteBlock.objectName():
+            sector = self.spnSector.value()
+            block = self.spnBlock.value()
+            cmd = command.write_block_cmd(sector, block)
+            for i in range(0, 16):
+                attr = getattr(self, "txtBlock%d" % i)
+                val = attr.text()
+                if self.cbASCII.isChecked():
+                    val = self.get_hexa_value(val)
+                cmd += " %s" % val
+            self.transmit(cmd)
         elif sender == self.cbASCII.objectName():
             # import bytes
             for i in range(0, 16):

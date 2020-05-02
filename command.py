@@ -15,3 +15,8 @@ def get_block_auth_cmd(sector, block, key_type):
 def read_block_cmd(sector, block):
     block = toHexString([(sector * 4) + block])
     return "FF B0 00 %s 10" % (block)
+
+
+def write_block_cmd(sector, block):
+    block = toHexString([(sector * 4) + block])
+    return "FF D6 00 %s 10" % (block)
