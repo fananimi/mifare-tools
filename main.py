@@ -83,10 +83,11 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyA%d' % i).text()
             self.transmit(cmd)
-            cmd = command.get_block_auth_cmd(0, 0, 'A')
+        elif sender == self.btnAuthKeyB.objectName():
+            cmd = command.LOAD_AUTH
+            for i in range(0, 6):
+                cmd += " %s" % getattr(self, 'txtKeyB%d' % i).text()
             self.transmit(cmd)
-        elif self == self.btnFactoryKeyB.objectName():
-            pass
         elif sender == self.btnFactoryKeyA.objectName():
             for i in range(0, 6):
                 getattr(self, 'txtKeyA%d' % i).setText("FF")
