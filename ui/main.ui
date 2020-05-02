@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>913</width>
+    <width>922</width>
     <height>640</height>
    </rect>
   </property>
@@ -70,7 +70,16 @@
              <string>Reader</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_10">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
               <number>9</number>
              </property>
              <item>
@@ -154,7 +163,16 @@
              <string/>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_13">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
               <number>9</number>
              </property>
              <item>
@@ -210,7 +228,16 @@
              <string>UID</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_11">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
               <number>9</number>
              </property>
              <item>
@@ -260,7 +287,16 @@
              <string>ATR</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_12">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>9</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
               <number>9</number>
              </property>
              <item>
@@ -1044,6 +1080,38 @@
         <item row="0" column="0">
          <widget class="QPlainTextEdit" name="txtAPDULog"/>
         </item>
+        <item row="1" column="0">
+         <widget class="QFrame" name="frame_7">
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnClearLog">
+             <property name="text">
+              <string>Clear</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -1055,8 +1123,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>913</width>
-     <height>25</height>
+     <width>922</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

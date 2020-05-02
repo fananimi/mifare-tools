@@ -48,6 +48,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnFactoryKeyA.clicked.connect(self.on_click)
         self.btnFactoryKeyB.clicked.connect(self.on_click)
         self.btnReadBlock.clicked.connect(self.on_click)
+        self.btnClearLog.clicked.connect(self.on_click)
         # comoBox changed index
         self.cmbReader.currentIndexChanged\
             .connect(self.on_combobox_index_changed)
@@ -97,6 +98,8 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         elif sender == self.btnReadBlock.objectName():
             cmd = command.read_block_cmd(0, 0)
             self.transmit(cmd)
+        elif sender == self.btnClearLog.objectName():
+            self.txtAPDULog.clear()
 
     # -------------------------------------------------------------------------
     # ************************ Helper function is here ************************
