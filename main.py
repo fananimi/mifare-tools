@@ -48,6 +48,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnFactoryKeyA.clicked.connect(self.on_click)
         self.btnFactoryKeyB.clicked.connect(self.on_click)
         self.btnReadBlock.clicked.connect(self.on_click)
+        self.cbASCII.clicked.connect(self.on_click)
         self.btnClearLog.clicked.connect(self.on_click)
         # comoBox changed index
         self.cmbReader.currentIndexChanged\
@@ -113,9 +114,20 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             cmd = command.read_block_cmd(sector, block)
             data = self.transmit(cmd)
             i = 0
-            for char in data.split():
-                getattr(self, 'txtBlock%d' % i).setText(char)
+            for val in data.split():
+                if self.cbASCII.isChecked():
+                    val = self.get_ascii_value(val)
+                getattr(self, 'txtBlock%d' % i).setText(val)
                 i += 1
+        elif sender == self.cbASCII.objectName():
+            # import bytes
+            for i in range(0, 16):
+                attr = getattr(self, 'txtBlock%d' % i)
+                val = attr.text()
+                if self.cbASCII.isChecked():
+                    attr.setText(self.get_ascii_value(val))
+                else:
+                    attr.setText(self.get_hexa_value(val))
         elif sender == self.btnClearLog.objectName():
             self.txtAPDULog.clear()
 
@@ -153,6 +165,18 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.tabMain.setEnabled(False)
         self.is_picc_connect = False
         self.write_statusbar("Card disconnected", "blue")
+
+    def get_ascii_value(self, hex_str):
+        if not hex_str or hex_str == "00":
+            return ""
+        ascii = chr(int(hex_str, 16))
+        return ascii
+
+    def get_hexa_value(self, char):
+        if not char:
+            return "00"
+        hexa = "%x" % ord(char)
+        return hexa.upper()
 
     def reload_readers(self):
         self.cmbReader.clear()

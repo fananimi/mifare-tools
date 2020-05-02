@@ -426,126 +426,161 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName(u"groupBox")
         sizePolicy1.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
         self.groupBox.setSizePolicy(sizePolicy1)
-        self.horizontalLayout_9 = QHBoxLayout(self.groupBox)
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.frame_9 = QFrame(self.groupBox)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.NoFrame)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.frame_9)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.btnReadBlock = QPushButton(self.groupBox)
+        self.btnReadBlock = QPushButton(self.frame_9)
         self.btnReadBlock.setObjectName(u"btnReadBlock")
         sizePolicy3.setHeightForWidth(self.btnReadBlock.sizePolicy().hasHeightForWidth())
         self.btnReadBlock.setSizePolicy(sizePolicy3)
 
         self.horizontalLayout_9.addWidget(self.btnReadBlock)
 
-        self.txtBlock0 = QLineEdit(self.groupBox)
+        self.btnWriteBlock = QPushButton(self.frame_9)
+        self.btnWriteBlock.setObjectName(u"btnWriteBlock")
+        sizePolicy3.setHeightForWidth(self.btnWriteBlock.sizePolicy().hasHeightForWidth())
+        self.btnWriteBlock.setSizePolicy(sizePolicy3)
+
+        self.horizontalLayout_9.addWidget(self.btnWriteBlock)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_9.addItem(self.horizontalSpacer_2)
+
+        self.cbASCII = QCheckBox(self.frame_9)
+        self.cbASCII.setObjectName(u"cbASCII")
+        self.cbASCII.setChecked(False)
+
+        self.horizontalLayout_9.addWidget(self.cbASCII)
+
+
+        self.verticalLayout_5.addWidget(self.frame_9)
+
+        self.frame_8 = QFrame(self.groupBox)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.NoFrame)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.frame_8)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.txtBlock0 = QLineEdit(self.frame_8)
         self.txtBlock0.setObjectName(u"txtBlock0")
         self.txtBlock0.setMaximumSize(QSize(30, 30))
         self.txtBlock0.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock0)
+        self.horizontalLayout_15.addWidget(self.txtBlock0)
 
-        self.txtBlock1 = QLineEdit(self.groupBox)
-        self.txtBlock1.setObjectName(u"txtBlock1")
-        self.txtBlock1.setMaximumSize(QSize(30, 30))
-        self.txtBlock1.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock1)
-
-        self.txtBlock2 = QLineEdit(self.groupBox)
-        self.txtBlock2.setObjectName(u"txtBlock2")
-        self.txtBlock2.setMaximumSize(QSize(30, 30))
-        self.txtBlock2.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock2)
-
-        self.txtBlock3 = QLineEdit(self.groupBox)
+        self.txtBlock3 = QLineEdit(self.frame_8)
         self.txtBlock3.setObjectName(u"txtBlock3")
         self.txtBlock3.setMaximumSize(QSize(30, 30))
         self.txtBlock3.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock3)
+        self.horizontalLayout_15.addWidget(self.txtBlock3)
 
-        self.txtBlock4 = QLineEdit(self.groupBox)
+        self.txtBlock4 = QLineEdit(self.frame_8)
         self.txtBlock4.setObjectName(u"txtBlock4")
         self.txtBlock4.setMaximumSize(QSize(30, 30))
         self.txtBlock4.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock4)
+        self.horizontalLayout_15.addWidget(self.txtBlock4)
 
-        self.txtBlock5 = QLineEdit(self.groupBox)
-        self.txtBlock5.setObjectName(u"txtBlock5")
-        self.txtBlock5.setMaximumSize(QSize(30, 30))
-        self.txtBlock5.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock5)
-
-        self.txtBlock6 = QLineEdit(self.groupBox)
-        self.txtBlock6.setObjectName(u"txtBlock6")
-        self.txtBlock6.setMaximumSize(QSize(30, 30))
-        self.txtBlock6.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock6)
-
-        self.txtBlock7 = QLineEdit(self.groupBox)
-        self.txtBlock7.setObjectName(u"txtBlock7")
-        self.txtBlock7.setMaximumSize(QSize(30, 30))
-        self.txtBlock7.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock7)
-
-        self.txtBlock8 = QLineEdit(self.groupBox)
-        self.txtBlock8.setObjectName(u"txtBlock8")
-        self.txtBlock8.setMaximumSize(QSize(30, 30))
-        self.txtBlock8.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock8)
-
-        self.txtBlock9 = QLineEdit(self.groupBox)
-        self.txtBlock9.setObjectName(u"txtBlock9")
-        self.txtBlock9.setMaximumSize(QSize(30, 30))
-        self.txtBlock9.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock9)
-
-        self.txtBlock10 = QLineEdit(self.groupBox)
-        self.txtBlock10.setObjectName(u"txtBlock10")
-        self.txtBlock10.setMaximumSize(QSize(30, 30))
-        self.txtBlock10.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock10)
-
-        self.txtBlock11 = QLineEdit(self.groupBox)
-        self.txtBlock11.setObjectName(u"txtBlock11")
-        self.txtBlock11.setMaximumSize(QSize(30, 30))
-        self.txtBlock11.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock11)
-
-        self.txtBlock12 = QLineEdit(self.groupBox)
+        self.txtBlock12 = QLineEdit(self.frame_8)
         self.txtBlock12.setObjectName(u"txtBlock12")
         self.txtBlock12.setMaximumSize(QSize(30, 30))
         self.txtBlock12.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock12)
+        self.horizontalLayout_15.addWidget(self.txtBlock12)
 
-        self.txtBlock13 = QLineEdit(self.groupBox)
-        self.txtBlock13.setObjectName(u"txtBlock13")
-        self.txtBlock13.setMaximumSize(QSize(30, 30))
-        self.txtBlock13.setMaxLength(2)
-
-        self.horizontalLayout_9.addWidget(self.txtBlock13)
-
-        self.txtBlock14 = QLineEdit(self.groupBox)
+        self.txtBlock14 = QLineEdit(self.frame_8)
         self.txtBlock14.setObjectName(u"txtBlock14")
         self.txtBlock14.setMaximumSize(QSize(30, 30))
         self.txtBlock14.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock14)
+        self.horizontalLayout_15.addWidget(self.txtBlock14)
 
-        self.txtBlock15 = QLineEdit(self.groupBox)
+        self.txtBlock8 = QLineEdit(self.frame_8)
+        self.txtBlock8.setObjectName(u"txtBlock8")
+        self.txtBlock8.setMaximumSize(QSize(30, 30))
+        self.txtBlock8.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock8)
+
+        self.txtBlock2 = QLineEdit(self.frame_8)
+        self.txtBlock2.setObjectName(u"txtBlock2")
+        self.txtBlock2.setMaximumSize(QSize(30, 30))
+        self.txtBlock2.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock2)
+
+        self.txtBlock1 = QLineEdit(self.frame_8)
+        self.txtBlock1.setObjectName(u"txtBlock1")
+        self.txtBlock1.setMaximumSize(QSize(30, 30))
+        self.txtBlock1.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock1)
+
+        self.txtBlock11 = QLineEdit(self.frame_8)
+        self.txtBlock11.setObjectName(u"txtBlock11")
+        self.txtBlock11.setMaximumSize(QSize(30, 30))
+        self.txtBlock11.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock11)
+
+        self.txtBlock9 = QLineEdit(self.frame_8)
+        self.txtBlock9.setObjectName(u"txtBlock9")
+        self.txtBlock9.setMaximumSize(QSize(30, 30))
+        self.txtBlock9.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock9)
+
+        self.txtBlock13 = QLineEdit(self.frame_8)
+        self.txtBlock13.setObjectName(u"txtBlock13")
+        self.txtBlock13.setMaximumSize(QSize(30, 30))
+        self.txtBlock13.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock13)
+
+        self.txtBlock7 = QLineEdit(self.frame_8)
+        self.txtBlock7.setObjectName(u"txtBlock7")
+        self.txtBlock7.setMaximumSize(QSize(30, 30))
+        self.txtBlock7.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock7)
+
+        self.txtBlock5 = QLineEdit(self.frame_8)
+        self.txtBlock5.setObjectName(u"txtBlock5")
+        self.txtBlock5.setMaximumSize(QSize(30, 30))
+        self.txtBlock5.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock5)
+
+        self.txtBlock10 = QLineEdit(self.frame_8)
+        self.txtBlock10.setObjectName(u"txtBlock10")
+        self.txtBlock10.setMaximumSize(QSize(30, 30))
+        self.txtBlock10.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock10)
+
+        self.txtBlock6 = QLineEdit(self.frame_8)
+        self.txtBlock6.setObjectName(u"txtBlock6")
+        self.txtBlock6.setMaximumSize(QSize(30, 30))
+        self.txtBlock6.setMaxLength(2)
+
+        self.horizontalLayout_15.addWidget(self.txtBlock6)
+
+        self.txtBlock15 = QLineEdit(self.frame_8)
         self.txtBlock15.setObjectName(u"txtBlock15")
         self.txtBlock15.setMaximumSize(QSize(30, 30))
         self.txtBlock15.setMaxLength(2)
 
-        self.horizontalLayout_9.addWidget(self.txtBlock15)
+        self.horizontalLayout_15.addWidget(self.txtBlock15)
+
+
+        self.verticalLayout_5.addWidget(self.frame_8)
 
 
         self.verticalLayout_4.addWidget(self.groupBox)
@@ -647,6 +682,8 @@ class Ui_MainWindow(object):
         self.btnFactoryKeyB.setText(QCoreApplication.translate("MainWindow", u"Factory", None))
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Data Block", None))
         self.btnReadBlock.setText(QCoreApplication.translate("MainWindow", u"Read", None))
+        self.btnWriteBlock.setText(QCoreApplication.translate("MainWindow", u"Write", None))
+        self.cbASCII.setText(QCoreApplication.translate("MainWindow", u"ASCII", None))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Operations", None))
         self.tabMain.setTabText(self.tabMain.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Utility", None))
         self.btnClearLog.setText(QCoreApplication.translate("MainWindow", u"Clear", None))
