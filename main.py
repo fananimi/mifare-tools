@@ -4,7 +4,7 @@ import command
 from smartcard.Exceptions import NoCardException, CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString, toBytes
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2 import QtGui, QtWidgets
 from ui.main import Ui_MainWindow
 
 
@@ -28,17 +28,17 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         if self.is_picc_connect:
             self.disconnect_picc()
 
-    # --------------------------------------------------------------------------------
-    # ********************* All functions shown to user is here *********************|
-    # --------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # ****************** All functions shown to user is here ******************
+    # -------------------------------------------------------------------------
     def init_ui(self):
         # set combobox
         self.cmbReader.setModel(self.reader_model)
         self.reload_readers()
 
-    # --------------------------------------------------------------------------------
-    # ****************** All signals must register on this section ******************|
-    # --------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # *************** All signals must register on this section ***************
+    # -------------------------------------------------------------------------
     def register_signal(self):
         # clicked signal
         self.btnReloadReader.clicked.connect(self.on_click)
@@ -49,12 +49,12 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnFactoryKeyB.clicked.connect(self.on_click)
         self.btnReadBlock.clicked.connect(self.on_click)
         # comoBox changed index
-        self.cmbReader.currentIndexChanged.connect(self.on_combobox_index_changed)
+        self.cmbReader.currentIndexChanged\
+            .connect(self.on_combobox_index_changed)
 
-
-    # --------------------------------------------------------------------------------
-    # *************************** Signal callback is here ***************************|
-    # --------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # ************************ Signal callback is here ************************
+    # -------------------------------------------------------------------------
     def on_combobox_index_changed(self):
         sender = self.sender().objectName()
         if sender == self.cmbReader.objectName():
@@ -83,7 +83,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyA%d' % i).text()
             self.transmit(cmd)
-            cmd = command.get_block_auth_cmd(0,0,'A')
+            cmd = command.get_block_auth_cmd(0, 0, 'A')
             self.transmit(cmd)
         elif self == self.btnFactoryKeyB.objectName():
             pass
@@ -94,12 +94,12 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 getattr(self, 'txtKeyB%d' % i).setText("FF")
         elif sender == self.btnReadBlock.objectName():
-            cmd = command.read_block_cmd(0,0)
+            cmd = command.read_block_cmd(0, 0)
             self.transmit(cmd)
 
-    # --------------------------------------------------------------------------------
-    # *************************** Helper function is here ***************************|
-    # --------------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # ************************ Helper function is here ************************
+    # -------------------------------------------------------------------------
     def connect_picc(self):
         try:
             self.current_connection.connect()
@@ -145,7 +145,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         response = toHexString(data)
 
         # write status to apdu log
-        apdu_request  = ">> %s\n" % cmd
+        apdu_request = ">> %s\n" % cmd
         apdu_response = "<< (%s) %s\n" % (status_code, response)
         self.txtAPDULog.insertPlainText(apdu_request)
         self.txtAPDULog.insertPlainText(apdu_response)
