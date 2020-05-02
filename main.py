@@ -83,11 +83,23 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             cmd = command.LOAD_AUTH
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyA%d' % i).text()
+            # load auth
+            self.transmit(cmd)
+            # auth block
+            sector = self.spnSector.value()
+            block = self.spnBlock.value()
+            cmd = command.get_block_auth_cmd(sector, block, command.KEY_TYPE_A)
             self.transmit(cmd)
         elif sender == self.btnAuthKeyB.objectName():
             cmd = command.LOAD_AUTH
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyB%d' % i).text()
+            # load auth
+            self.transmit(cmd)
+            # auth block
+            sector = self.spnSector.value()
+            block = self.spnBlock.value()
+            cmd = command.get_block_auth_cmd(sector, block, command.KEY_TYPE_B)
             self.transmit(cmd)
         elif sender == self.btnFactoryKeyA.objectName():
             for i in range(0, 6):
