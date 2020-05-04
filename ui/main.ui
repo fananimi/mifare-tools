@@ -843,7 +843,13 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_15">
               <item>
-               <widget class="QLineEdit" name="txtBlock0">
+               <widget class="QLineEdit" name="txtBlock_0">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -856,7 +862,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock3">
+               <widget class="QLineEdit" name="txtBlock_1">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -869,7 +881,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock4">
+               <widget class="QLineEdit" name="txtBlock_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -882,7 +900,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock12">
+               <widget class="QLineEdit" name="txtBlock_3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -895,7 +919,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock14">
+               <widget class="QLineEdit" name="txtBlock_4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -908,7 +938,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock8">
+               <widget class="QLineEdit" name="txtBlock_5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -921,7 +957,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock2">
+               <widget class="QLineEdit" name="txtBlock_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -934,7 +976,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock1">
+               <widget class="QLineEdit" name="txtBlock_7">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -947,7 +995,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock11">
+               <widget class="QLineEdit" name="txtBlock_8">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -960,7 +1014,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock9">
+               <widget class="QLineEdit" name="txtBlock_9">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -973,7 +1033,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock13">
+               <widget class="QLineEdit" name="txtBlock_10">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -986,7 +1052,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock7">
+               <widget class="QLineEdit" name="txtBlock_11">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -999,7 +1071,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock5">
+               <widget class="QLineEdit" name="txtBlock_12">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -1012,7 +1090,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock10">
+               <widget class="QLineEdit" name="txtBlock_13">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -1025,7 +1109,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock6">
+               <widget class="QLineEdit" name="txtBlock_14">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>
@@ -1038,7 +1128,13 @@
                </widget>
               </item>
               <item>
-               <widget class="QLineEdit" name="txtBlock15">
+               <widget class="QLineEdit" name="txtBlock_15">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="maximumSize">
                  <size>
                   <width>30</width>

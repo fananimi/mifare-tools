@@ -4,7 +4,7 @@ import command
 from smartcard.Exceptions import NoCardException, CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString, toBytes
-from PySide2 import QtGui, QtWidgets
+from PySide2 import QtCore, QtGui, QtWidgets
 from ui.main import Ui_MainWindow
 
 
@@ -51,6 +51,10 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnWriteBlock.clicked.connect(self.on_click)
         self.cbASCII.clicked.connect(self.on_click)
         self.btnClearLog.clicked.connect(self.on_click)
+        # signal when block text editing
+        for i in range(0, 16):
+            getattr(self, 'txtBlock_%d' % i).textEdited\
+                .connect(self.on_text_edited)
         # comoBox changed index
         self.cmbReader.currentIndexChanged\
             .connect(self.on_combobox_index_changed)
@@ -118,14 +122,14 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for val in data.split():
                 if self.cbASCII.isChecked():
                     val = self.get_ascii_value(val)
-                getattr(self, 'txtBlock%d' % i).setText(val)
+                getattr(self, 'txtBlock_%d' % i).setText(val)
                 i += 1
         elif sender == self.btnWriteBlock.objectName():
             sector = self.spnSector.value()
             block = self.spnBlock.value()
             cmd = command.write_block_cmd(sector, block)
             for i in range(0, 16):
-                attr = getattr(self, "txtBlock%d" % i)
+                attr = getattr(self, "txtBlock_%d" % i)
                 val = attr.text()
                 if self.cbASCII.isChecked():
                     val = self.get_hexa_value(val)
@@ -134,7 +138,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         elif sender == self.cbASCII.objectName():
             # import bytes
             for i in range(0, 16):
-                attr = getattr(self, 'txtBlock%d' % i)
+                attr = getattr(self, 'txtBlock_%d' % i)
                 val = attr.text()
                 if self.cbASCII.isChecked():
                     attr.setMaxLength(1)
@@ -144,6 +148,33 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
                     attr.setText(self.get_hexa_value(val))
         elif sender == self.btnClearLog.objectName():
             self.txtAPDULog.clear()
+
+    def on_text_edited(self, text):
+        sender = self.sender().objectName()
+        attr = getattr(self, sender)
+        curr_index = int(sender.split('_')[-1])
+        next_index = curr_index + 1
+        next_attr = None
+        if next_index < 16:
+            next_attr = getattr(self, 'txtBlock_%d' % next_index)
+
+        # if next_attr:
+        if self.cbASCII.isChecked():
+            if next_attr:
+                # go to next field
+                next_attr.setText("")
+                next_attr.setFocus()
+        else:
+            text = text.upper()
+            attr.setText(text)
+            if next_attr and len(text) == 2:
+                try:
+                    # go to next field
+                    self.get_ascii_value(text)
+                    next_attr.setText("")
+                    next_attr.setFocus()
+                except ValueError:
+                    attr.setText("")
 
     # -------------------------------------------------------------------------
     # ************************ Helper function is here ************************
