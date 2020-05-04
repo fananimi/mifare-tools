@@ -116,7 +116,9 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyA_%d' % i).text()
             # load auth
-            self.transmit(cmd)
+            status, response = self.transmit(cmd)
+            if status != "90 00":
+                return
             # auth block
             sector = self.spnSector.value()
             block = self.spnBlock.value()
@@ -127,7 +129,9 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 cmd += " %s" % getattr(self, 'txtKeyB_%d' % i).text()
             # load auth
-            self.transmit(cmd)
+            status, response = self.transmit(cmd)
+            if status != "90 00":
+                return
             # auth block
             sector = self.spnSector.value()
             block = self.spnBlock.value()
@@ -144,9 +148,11 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             sector = self.spnSector.value()
             block = self.spnBlock.value()
             cmd = command.read_block_cmd(sector, block)
-            data = self.transmit(cmd)
+            status, response = self.transmit(cmd)
+            if status != "90 00":
+                return
             i = 0
-            for val in data.split():
+            for val in response.split():
                 if self.cbASCII.isChecked():
                     val = self.get_ascii_value(val)
                 getattr(self, 'txtBlock_%d' % i).setText(val)
@@ -215,7 +221,9 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
     def connect_picc(self):
         try:
             self.current_connection.connect()
-            uid = self.transmit(command.UID)
+            status, uid = self.transmit(command.UID)
+            if status != "90 00":
+                return
             atr = toHexString(self.current_connection.getATR())
             self.txtUID.setText(uid)
             self.txtATR.setText(atr)
@@ -270,22 +278,26 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             attr.setText("")
 
     def transmit(self, cmd):
-        data, sw1, sw2 = self.current_connection.transmit(toBytes(cmd))
-        status_code = toHexString([sw1, sw2])
-        response = toHexString(data)
+        status_code = response = None
+        try:
+            data, sw1, sw2 = self.current_connection.transmit(toBytes(cmd))
+            status_code = toHexString([sw1, sw2])
+            response = toHexString(data)
 
-        # write status to apdu log
-        apdu_request = ">> %s\n" % cmd
-        apdu_response = "<< (%s) %s\n" % (status_code, response)
-        self.txtAPDULog.insertPlainText(apdu_request)
-        self.txtAPDULog.insertPlainText(apdu_response)
-        self.txtAPDULog.insertPlainText("\n")
+            # write status to apdu log
+            apdu_request = ">> %s\n" % cmd
+            apdu_response = "<< (%s) %s\n" % (status_code, response)
+            self.txtAPDULog.insertPlainText(apdu_request)
+            self.txtAPDULog.insertPlainText(apdu_response)
+            self.txtAPDULog.insertPlainText("\n")
 
-        # write status to statusbar
-        status_color = "green" if status_code == '90 00' else "red"
-        self.write_statusbar(status_code, status_color)
+            # write status to statusbar
+            status_color = "green" if status_code == '90 00' else "red"
+            self.write_statusbar(status_code, status_color)
+        except CardConnectionException:
+            self.disconnect_picc()
 
-        return response
+        return status_code, response
 
     def write_statusbar(self, message, color='green'):
         self.statusbar.setStyleSheet("color: %s;" % color)
