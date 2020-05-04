@@ -53,8 +53,9 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnClearLog.clicked.connect(self.on_click)
         # signal when block text editing
         for i in range(0, 16):
-            getattr(self, 'txtBlock_%d' % i).textEdited\
-                .connect(self.on_text_edited)
+            attr = getattr(self, 'txtBlock_%d' % i)
+            attr.installEventFilter(self)
+            attr.textEdited.connect(self.on_text_edited)
         # comoBox changed index
         self.cmbReader.currentIndexChanged\
             .connect(self.on_combobox_index_changed)
@@ -62,6 +63,20 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
     # -------------------------------------------------------------------------
     # ************************ Signal callback is here ************************
     # -------------------------------------------------------------------------
+    def eventFilter(self, source, event):
+        if (event.type() == QtCore.QEvent.KeyPress):
+            if event.key() == QtCore.Qt.Key_Backspace:
+                sender = source.objectName()
+                if (sender.startswith('txtBlock_')):
+                    if (len(source.text()) == 0):
+                        curr_index = int(sender.split('_')[-1])
+                        prev_index = curr_index - 1
+                        if prev_index >= 0:
+                            prev_attr = getattr(self, 'txtBlock_%d' % prev_index)
+                            prev_attr.setText("")
+                            prev_attr.setFocus()
+        return super(MifareTools, self).eventFilter(source, event)
+
     def on_combobox_index_changed(self):
         sender = self.sender().objectName()
         if sender == self.cmbReader.objectName():
@@ -151,7 +166,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
 
     def on_text_edited(self, text):
         sender = self.sender().objectName()
-        attr = getattr(self, sender)
+        curr_attr = getattr(self, sender)
         curr_index = int(sender.split('_')[-1])
         next_index = curr_index + 1
         next_attr = None
@@ -159,22 +174,23 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             next_attr = getattr(self, 'txtBlock_%d' % next_index)
 
         # if next_attr:
-        if self.cbASCII.isChecked():
-            if next_attr:
-                # go to next field
-                next_attr.setText("")
-                next_attr.setFocus()
-        else:
-            text = text.upper()
-            attr.setText(text)
-            if next_attr and len(text) == 2:
-                try:
+        if text:
+            if self.cbASCII.isChecked():
+                if next_attr:
                     # go to next field
-                    self.get_ascii_value(text)
                     next_attr.setText("")
                     next_attr.setFocus()
-                except ValueError:
-                    attr.setText("")
+            else:
+                text = text.upper()
+                curr_attr.setText(text)
+                if next_attr and len(text) == 2:
+                    try:
+                        # go to next field
+                        self.get_ascii_value(text)
+                        next_attr.setText("")
+                        next_attr.setFocus()
+                    except ValueError:
+                        curr_attr.setText("")
 
     # -------------------------------------------------------------------------
     # ************************ Helper function is here ************************
