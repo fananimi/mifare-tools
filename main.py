@@ -140,6 +140,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             for i in range(0, 6):
                 getattr(self, 'txtKeyB_%d' % i).setText("FF")
         elif sender == self.btnReadBlock.objectName():
+            self.reset_block()
             sector = self.spnSector.value()
             block = self.spnBlock.value()
             cmd = command.read_block_cmd(sector, block)
@@ -242,6 +243,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.tabMain.setEnabled(False)
         self.is_picc_connect = False
         self.write_statusbar("Card disconnected", "blue")
+        self.reset_block()
 
     def get_ascii_value(self, hex_str):
         if not hex_str or hex_str == "00":
@@ -261,6 +263,11 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             reader_item = QtGui.QStandardItem(reader.name)
             reader_item.setData(reader)
             self.reader_model.appendRow(reader_item)
+
+    def reset_block(self):
+        for i in range(0, 16):
+            attr = getattr(self, 'txtBlock_%d' % i)
+            attr.setText("")
 
     def transmit(self, cmd):
         data, sw1, sw2 = self.current_connection.transmit(toBytes(cmd))
