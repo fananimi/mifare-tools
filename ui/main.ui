@@ -402,7 +402,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_5">
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA0">
+                  <widget class="QLineEdit" name="txtKeyA_0">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -424,7 +424,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA1">
+                  <widget class="QLineEdit" name="txtKeyA_1">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -446,7 +446,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA2">
+                  <widget class="QLineEdit" name="txtKeyA_2">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -468,7 +468,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA3">
+                  <widget class="QLineEdit" name="txtKeyA_3">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -490,7 +490,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA4">
+                  <widget class="QLineEdit" name="txtKeyA_4">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -512,7 +512,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyA5">
+                  <widget class="QLineEdit" name="txtKeyA_5">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -581,7 +581,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_7">
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB0">
+                  <widget class="QLineEdit" name="txtKeyB_0">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -603,7 +603,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB1">
+                  <widget class="QLineEdit" name="txtKeyB_1">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -625,7 +625,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB2">
+                  <widget class="QLineEdit" name="txtKeyB_2">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -647,7 +647,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB3">
+                  <widget class="QLineEdit" name="txtKeyB_3">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -669,7 +669,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB4">
+                  <widget class="QLineEdit" name="txtKeyB_4">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -691,7 +691,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txtKeyB5">
+                  <widget class="QLineEdit" name="txtKeyB_5">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>

@@ -51,6 +51,16 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         self.btnWriteBlock.clicked.connect(self.on_click)
         self.cbASCII.clicked.connect(self.on_click)
         self.btnClearLog.clicked.connect(self.on_click)
+        # signal when key a/b editing
+        for i in range(0, 6):
+            # key a
+            attr_key_a = getattr(self, 'txtKeyA_%d' % i)
+            attr_key_a.textEdited.connect(self.on_text_edited)
+            attr_key_a.installEventFilter(self)
+            # key b
+            attr_key_b = getattr(self, 'txtKeyB_%d' % i)
+            attr_key_b.textEdited.connect(self.on_text_edited)
+            attr_key_b.installEventFilter(self)
         # signal when block text editing
         for i in range(0, 16):
             attr = getattr(self, 'txtBlock_%d' % i)
@@ -67,12 +77,13 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         if (event.type() == QtCore.QEvent.KeyPress):
             if event.key() == QtCore.Qt.Key_Backspace:
                 sender = source.objectName()
-                if (sender.startswith('txtBlock_')):
+                prefix, index = sender.split('_')
+                if prefix in ["txtKeyA", "txtKeyB", "txtBlock"]:
                     if (len(source.text()) == 0):
-                        curr_index = int(sender.split('_')[-1])
+                        curr_index = int(index)
                         prev_index = curr_index - 1
                         if prev_index >= 0:
-                            prev_attr = getattr(self, 'txtBlock_%d' % prev_index)
+                            prev_attr = getattr(self, '%s_%d' % (prefix, prev_index))
                             prev_attr.setText("")
                             prev_attr.setFocus()
         return super(MifareTools, self).eventFilter(source, event)
@@ -103,7 +114,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         elif sender == self.btnAuthKeyA.objectName():
             cmd = command.LOAD_AUTH
             for i in range(0, 6):
-                cmd += " %s" % getattr(self, 'txtKeyA%d' % i).text()
+                cmd += " %s" % getattr(self, 'txtKeyA_%d' % i).text()
             # load auth
             self.transmit(cmd)
             # auth block
@@ -114,7 +125,7 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
         elif sender == self.btnAuthKeyB.objectName():
             cmd = command.LOAD_AUTH
             for i in range(0, 6):
-                cmd += " %s" % getattr(self, 'txtKeyB%d' % i).text()
+                cmd += " %s" % getattr(self, 'txtKeyB_%d' % i).text()
             # load auth
             self.transmit(cmd)
             # auth block
@@ -124,10 +135,10 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
             self.transmit(cmd)
         elif sender == self.btnFactoryKeyA.objectName():
             for i in range(0, 6):
-                getattr(self, 'txtKeyA%d' % i).setText("FF")
+                getattr(self, 'txtKeyA_%d' % i).setText("FF")
         elif sender == self.btnFactoryKeyB.objectName():
             for i in range(0, 6):
-                getattr(self, 'txtKeyB%d' % i).setText("FF")
+                getattr(self, 'txtKeyB_%d' % i).setText("FF")
         elif sender == self.btnReadBlock.objectName():
             sector = self.spnSector.value()
             block = self.spnBlock.value()
@@ -167,15 +178,20 @@ class MifareTools(Ui_MainWindow, QtWidgets.QMainWindow):
     def on_text_edited(self, text):
         sender = self.sender().objectName()
         curr_attr = getattr(self, sender)
-        curr_index = int(sender.split('_')[-1])
+        prefix, index = sender.split('_')
+        max_length = 0
+        if prefix in ["txtKeyA", "txtKeyB"]:
+            max_length = 6
+        if prefix == "txtBlock":
+            max_length = 16
+        curr_index = int(index)
         next_index = curr_index + 1
         next_attr = None
-        if next_index < 16:
-            next_attr = getattr(self, 'txtBlock_%d' % next_index)
+        if next_index < max_length:
+            next_attr = getattr(self, '%s_%d' % (prefix, next_index))
 
-        # if next_attr:
         if text:
-            if self.cbASCII.isChecked():
+            if self.cbASCII.isChecked() and prefix == 'txtBlock':
                 if next_attr:
                     # go to next field
                     next_attr.setText("")
